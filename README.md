@@ -4,6 +4,9 @@ As a new year resolution I have decided that I will solve atleast one DSA proble
 ## LeetCode Problems:
 
 ### Array:
+
+#### Easy:
+
 https://leetcode.com/problems/two-sum/
 
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
