@@ -26,3 +26,5 @@ https://leetcode.com/problems/majority-element/
 https://leetcode.com/problems/fibonacci-number/submissions/
 
 https://leetcode.com/problems/squares-of-a-sorted-array/
+
+https://leetcode.com/problems/pascals-triangle/submissions/
