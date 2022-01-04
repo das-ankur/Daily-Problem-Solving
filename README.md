@@ -28,3 +28,5 @@ https://leetcode.com/problems/fibonacci-number/submissions/
 https://leetcode.com/problems/squares-of-a-sorted-array/
 
 https://leetcode.com/problems/pascals-triangle/submissions/
+
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/
