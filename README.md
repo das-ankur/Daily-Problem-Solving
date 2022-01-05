@@ -32,3 +32,5 @@ https://leetcode.com/problems/pascals-triangle/submissions/
 https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 
 #### Medium
+
+https://leetcode.com/problems/merge-intervals/
