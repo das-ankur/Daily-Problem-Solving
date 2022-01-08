@@ -42,3 +42,5 @@ https://leetcode.com/problems/3sum/
 https://leetcode.com/problems/insert-delete-getrandom-o1/
 
 https://leetcode.com/problems/subarray-sum-equals-k/
+
+https://leetcode.com/problems/next-permutation/
