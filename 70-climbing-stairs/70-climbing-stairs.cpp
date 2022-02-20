@@ -18,9 +18,9 @@ public:
     }
     */
     int climbStairs(int n) {
-        vector<int> table(n+1);
         if(n<=2)
             return n;
+        vector<int> table(n+1);
         table[0]=0;
         table[1]=1;
         table[2]=2;
