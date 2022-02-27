@@ -14,7 +14,8 @@ class Solution {
         if(n<=1)
             return n;
         return nthFibonacci(n-1)+nthFibonacci(n-2);
-    }*/
+    }
+    */
     //Using Dynamic Programming
     long long int nthFibonacci(long long int n) {
         long long int fib[n+1];
@@ -25,7 +26,6 @@ class Solution {
             fib[i]=(fib[i-1]%1000000007+fib[i-2]%1000000007)%1000000007;
         return fib[n];
     }
-    
 };
 
 // { Driver Code Starts.
