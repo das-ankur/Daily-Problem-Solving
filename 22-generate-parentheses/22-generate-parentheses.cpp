@@ -26,7 +26,7 @@ public:
         return valid;
     }*/
     vector<string> valid;
-    void generate(string s, int open, int close) {
+    void generate(string &s, int open, int close) {
         if(open==0 && close==0) {
             valid.push_back(s);
             return;
@@ -40,6 +40,7 @@ public:
             if(open<close) {
                 s.push_back(')');
                 generate(s, open, close-1);
+                s.pop_back();
             }
         }
     }
