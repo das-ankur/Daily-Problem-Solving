@@ -46,6 +46,7 @@ public:
         }
         */
         //Fiest row and column as dummy  array
+        //Most Optimized in respect to time and space complexcity
         int m=matrix.size(), n=matrix[0].size();
         bool col=false;
         for(int i=0;i<m;i++) {
