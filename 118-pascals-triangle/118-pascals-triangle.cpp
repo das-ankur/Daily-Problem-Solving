@@ -1,20 +1,24 @@
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) {
-        vector<int> row;
-        vector<vector<int>> res;
-        for (int i = 0; i < numRows; i++)
-        {
-            for (int j = 0; j <= i; j++)
-            {
-                if(j == 0 || j == i)
-                    row.push_back(1);
-                else
-                    row.push_back(res[i - 1][j] + res[i - 1][j - 1]);
-            }
-            res.push_back(row);
-            row.clear();
+        /*
+        vector<vector<int>> p(numRows);
+        for(int i=0;i<numRows;i++) {
+            p[i].resize(i+1);
+            p[i][0]=p[i][i]=1;
+            for(int j=1;j<i;j++)
+                p[i][j]=p[i-1][j-1]+p[i-1][j];
         }
-        return res;
+        return p;
+        */
+        //Practice 1
+        vector<vector<int>> p(numRows);
+        for(int i=0;i<numRows;i++) {
+            p[i].resize(i+1);
+            p[i][0]=p[i][i]=1;
+            for(int j=1;j<i;j++)
+                p[i][j]=p[i-1][j-1]+p[i-1][j];
+        }
+        return p;
     }
 };
