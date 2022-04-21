@@ -15,9 +15,6 @@ public:
             row=high;
         else
             row=low;
-        //cout<<low<<endl;
-        //cout<<high<<endl;
-        //cout<<row;
         low=0, high=matrix[0].size()-1;
         while(low<=high) {
             int mid=(low+high)/2;
