@@ -28,6 +28,8 @@ public:
             return false;
         return flag;
         */
+        /*
+        //Practice 1
         stack<char> stk;
         bool flag=true;
         for(int i=0;i<s.size();i++) {
@@ -57,5 +59,20 @@ public:
         if(stk.size()!=0)
             flag=false;
         return flag;
+        */
+        //Practice 2
+        stack<char> stk;
+        for(int i=0;i<s.size();i++) {
+            if(s[i]=='(' || s[i]=='{' || s[i]=='[')
+                stk.push(s[i]);
+            else {
+                if(stk.empty() || (s[i]==')' && stk.top()!='(') || (s[i]=='}' && stk.top()!='{') || (s[i]==']' && stk.top()!='['))
+                    return false;
+                stk.pop();
+            }
+        }
+        if(stk.size()!=0)
+            return false;
+        return true;
     }
 };
