@@ -22,6 +22,7 @@ public:
         }
         return res;
         */
+        /*
         //Practice 2
         int max_end_here=0, res=INT_MIN;
         for(int i=0;i<nums.size();i++) {
@@ -33,5 +34,13 @@ public:
                 res=max_end_here;
         }
         return res;
+        */
+        // Practice 3
+        int max_ending_here=0, max_sum=INT_MIN;
+        for(int i=0;i<nums.size();i++) {
+            max_ending_here=max(nums[i], max_ending_here+nums[i]);
+            max_sum=max(max_sum, max_ending_here);
+        }
+        return max_sum;
     }
 };
