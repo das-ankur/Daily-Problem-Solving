@@ -1,1 +1,1 @@
-The problem is really easy. Only one loop and dynamic approach with one variable is enough to solve the problem.
+​
