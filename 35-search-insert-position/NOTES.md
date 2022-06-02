@@ -1,1 +1,1 @@
-​
+Here, First binary search is applied but condition is start < end therefore when start and end is refering the same index will not be checked. Therfore, when the first loop terminates I check that if target is at the start(or end because both are refering the same index) index then I  am returing the start index. If target is less than nums[start] then I am returning start as index where the target element will be inserted. If target is greater than nums[end] then I am returning start+1 as index where the target element will  be inserted.
