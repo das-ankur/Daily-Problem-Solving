@@ -12,12 +12,23 @@ public:
         }
         return false;
         */
+        /*
         //Practice 1
         unordered_map<int,int> m;
         for(auto num: nums) {
             if(m.find(num)!=m.end())
                 return true;
             m[num]++;
+        }
+        return false;
+        */
+        // Practice 2
+        unordered_set<int> s;
+        for(int i=0;i<nums.size();i++) {
+            if(s.find(nums[i])!=s.end())
+                return true;
+            else
+                s.insert(nums[i]);
         }
         return false;
     }
