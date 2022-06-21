@@ -78,7 +78,8 @@ public:
         */
         // Practice 3
         stack<char> stk;
-        for(char ch:s) {
+        for(int i=0;i<s.size();i++) {
+            char ch=s[i];
             if(ch=='(' || ch=='{' || ch=='[')
                 stk.push(ch);
             else if(ch==')') {
