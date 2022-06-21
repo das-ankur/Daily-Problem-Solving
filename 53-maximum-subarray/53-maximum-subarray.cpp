@@ -45,11 +45,20 @@ public:
         }
         return max_sum;
         */
+        /*
         // Practice 4
         int max_ending_here=0, max_sum=INT_MIN;
         for(int i=0;i<nums.size();i++) {
             max_ending_here=max(nums[i], max_ending_here+nums[i]);
             max_sum=max(max_sum, max_ending_here);
+        }
+        return max_sum;
+        */
+        //Practice 5
+        int max_ending_here=0, max_sum=INT_MIN;
+        for(int i=0;i<nums.size();i++) {
+            max_ending_here=max(max_ending_here+nums[i],nums[i]);
+            max_sum=max(max_sum,max_ending_here);
         }
         return max_sum;
     }
