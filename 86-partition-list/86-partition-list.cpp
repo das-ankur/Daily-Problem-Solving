@@ -31,7 +31,6 @@ public:
                 last->next=less_part.front();
                 last=last->next;
             }
-            cout<<last->val<<endl;
             less_part.pop();
         }
         while(!great_part.empty()) {
@@ -43,7 +42,6 @@ public:
                 last->next=great_part.front();
                 last=last->next;
             }
-            cout<<last->val<<endl;
             great_part.pop();
         }
         last->next=NULL;
