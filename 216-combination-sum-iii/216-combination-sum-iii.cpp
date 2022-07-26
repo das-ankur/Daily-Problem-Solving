@@ -33,6 +33,8 @@ public:
         return ans;
     }
     */
+    /*
+    // Practice 1
     void helper(int i, int n, int k, int sum, vector<int> &subset, vector<vector<int>> &res) {
         if(k==0 && sum==n) {
             res.push_back(subset);
@@ -53,6 +55,27 @@ public:
         vector<vector<int>> res;
         vector<int> subset;
         helper(1,n,k,0,subset,res);
+        return res;
+    }
+    */
+    // Practice 2
+    void helper(int i, int k, int n, vector<int> &subset, vector<vector<int>> &res) {
+        if(k==0 && n==0) {
+            res.push_back(subset);
+            return;
+        }
+        if(k==0 || n<=0) return;
+        if(k>9-i+1) return;
+        if(i>9) return;
+        subset.push_back(i);
+        helper(i+1,k-1,n-i,subset,res);
+        subset.pop_back();
+        helper(i+1,k,n,subset,res);
+    }
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<int> subset;
+        vector<vector<int>> res;
+        helper(1,k,n,subset,res);
         return res;
     }
 };
