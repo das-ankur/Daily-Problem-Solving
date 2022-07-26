@@ -91,6 +91,7 @@ public:
         return res;
     }
     */
+    /*
     // Practice 4
     void helper(vector<int> &nums, int i, vector<vector<int>> &res) {
         if(i>=nums.size()) {
@@ -108,6 +109,26 @@ public:
     }
     vector<vector<int>> permuteUnique(vector<int> &nums) {
         sort(nums.begin(), nums.end());
+        vector<vector<int>> res;
+        helper(nums,0,res);
+        return res;
+    }*/
+    // Practice 5
+    void helper(vector<int> &nums, int pos, vector<vector<int>> &res) {
+        if(pos>=nums.size()) {
+            res.push_back(nums);
+            return;
+        }
+        unordered_set<int> s;
+        for(int i=pos;i<nums.size();i++) {
+            if(s.find(nums[i])!=s.end()) continue;
+            s.insert(nums[i]);
+            swap(nums[i],nums[pos]);
+            helper(nums,pos+1,res);
+            swap(nums[i],nums[pos]);
+        }
+    }
+    vector<vector<int>> permuteUnique(vector<int> &nums) {
         vector<vector<int>> res;
         helper(nums,0,res);
         return res;
