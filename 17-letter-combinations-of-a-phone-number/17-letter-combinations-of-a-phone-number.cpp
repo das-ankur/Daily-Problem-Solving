@@ -65,6 +65,7 @@ public:
         return res;
     }
     */
+    /*
     void helper(string &digits,int pos,vector<string> &res, string &s,unordered_map<char,string> &m) {
         if(pos>=digits.size()) {
             res.push_back(s);
@@ -92,6 +93,36 @@ public:
         m['9']="wxyz";
         string s;
         helper(digits,0,res,s,m);
+        return res;
+    }
+    */
+    // Practice 2
+    void helper(string &digits, int pos, string &s, vector<string> &res, unordered_map<char,string> &m) {
+        if(pos>=digits.size()) {
+            res.push_back(s);
+            return;
+        }
+        string temp=m[digits[pos]];
+        for(char ch:temp) {
+            s.push_back(ch);
+            helper(digits,pos+1,s,res,m);
+            s.pop_back();
+        }
+    }
+    vector<string> letterCombinations(string digits) {
+        vector<string> res;
+        if(digits.empty()) return res;
+        unordered_map<char, string> m;
+        m['2']="abc";
+        m['3']="def";
+        m['4']="ghi";
+        m['5']="jkl";
+        m['6']="mno";
+        m['7']="pqrs";
+        m['8']="tuv";
+        m['9']="wxyz";
+        string s;
+        helper(digits,0,s,res,m);
         return res;
     }
 };
