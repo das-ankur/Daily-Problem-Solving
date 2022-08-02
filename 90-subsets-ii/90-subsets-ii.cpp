@@ -86,6 +86,7 @@ public:
         return res;
     }
     */
+    /*
     // Practice 4
     void helper(vector<int> &nums, int pos, vector<int> &subset, vector<vector<int>> &res) {
         if(pos>=nums.size()) {
@@ -99,6 +100,25 @@ public:
         helper(nums,pos+1,subset,res);
     }
     vector<vector<int>> subsetsWithDup(vector<int> &nums) {
+        sort(nums.begin(),nums.end());
+        vector<vector<int>> res;
+        vector<int> subset;
+        helper(nums,0,subset,res);
+        return res;
+    }*/
+    // Practice 5
+    void helper(vector<int> &nums, int pos, vector<int> &subset, vector<vector<int>> &res) {
+        if(pos>=nums.size()) {
+            res.push_back(subset);
+            return;
+        }
+        subset.push_back(nums[pos]);
+        helper(nums,pos+1,subset,res);
+        while(pos+1<nums.size() && nums[pos]==nums[pos+1]) pos++;
+        subset.pop_back();
+        helper(nums,pos+1,subset,res);
+    }
+    vector<vector<int>> subsetsWithDup(vector<int> nums) {
         sort(nums.begin(),nums.end());
         vector<vector<int>> res;
         vector<int> subset;
