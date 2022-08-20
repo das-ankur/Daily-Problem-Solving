@@ -68,6 +68,7 @@ public:
         return res;
     }
     */
+    /*
     // Practice 3
     void helper(int pos, vector<int> &arr, int sum, int target, vector<int> &subset, vector<vector<int>> &res) {
         if(sum==target) {
@@ -87,6 +88,25 @@ public:
         vector<vector<int>> res;
         vector<int> subset;
         helper(0,candidates,0,target,subset,res);
+        return res;
+    }*/
+    // Practice 4
+    void helper(int i, int sum, int target, vector<int> &candidates, vector<int> &subset, vector<vector<int>> &res) {
+        if(sum==target) {
+            res.push_back(subset);
+            return;
+        }
+        if(sum>target) return;
+        if(i>=candidates.size()) return;
+        subset.push_back(candidates[i]);
+        helper(i,sum+candidates[i],target,candidates,subset,res);
+        subset.pop_back();
+        helper(i+1,sum,target,candidates,subset,res);
+    }
+    vector<vector<int>> combinationSum(vector<int> &candidates, int target) {
+        vector<int> subset;
+        vector<vector<int>> res;
+        helper(0,0,target,candidates,subset,res);
         return res;
     }
 };
