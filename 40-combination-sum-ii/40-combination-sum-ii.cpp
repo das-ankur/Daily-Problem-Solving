@@ -75,7 +75,7 @@ public:
     }
     */
     // Practice 3
-    void helper(int i, vector<int> &arr, int target, vector<int> subset, vector<vector<int>> &res) {
+    void helper(int i, vector<int> &arr, int target, vector<int> &subset, vector<vector<int>> &res) {
         if(target==0) {
             res.push_back(subset);
             return;
