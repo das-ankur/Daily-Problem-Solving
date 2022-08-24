@@ -27,8 +27,8 @@ public:
     int numDecodings(string s) {
         int n=s.size();
         vector<int> table(n,-1);
-        if(s[0]=='0') table[0]=0;
-        else table[0]=1;
+        if(s[0]=='0') return 0;
+        table[0]=1;
         for(int i=1;i<n;i++) {
             int one_digit=0;
             if(s[i]!='0') one_digit=table[i-1];
