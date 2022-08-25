@@ -28,6 +28,7 @@ public:
         return helper(m-1,n-1,memo);
     }
     */
+    /*
     // Tabulation
     int uniquePaths(int m, int n) {
         vector<vector<int>> table(m, vector<int>(n,-1));
@@ -42,5 +43,25 @@ public:
             }
         }
         return table[m-1][n-1];
+    }
+    */
+    // Space Optimization
+    int uniquePaths(int m, int n) {
+        vector<int> prev(n,0);
+        for(int row=0;row<m;row++) {
+            vector<int> cur(n,0);
+            for(int col=0;col<n;col++) {
+                if(row==0 && col==0) {
+                    cur[0]=1;
+                    continue;
+                }
+                int move_left=0, move_up=0;
+                if(col>=1) move_left=cur[col-1];
+                if(row>=1) move_up=prev[col];
+                cur[col]=move_left+move_up;
+            }
+            prev=cur;
+        }
+        return prev[n-1];
     }
 };
