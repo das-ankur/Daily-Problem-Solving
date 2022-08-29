@@ -39,6 +39,7 @@ public:
         return path;
     }
     */
+    /*
     // Tabulation
     int minFallingPathSum(vector<vector<int>>& matrix) {
         int m=matrix.size();
@@ -56,6 +57,28 @@ public:
         }
         int path=INT_MAX;
         for(int col=0;col<n;col++) path=min(path, table[m-1][col]);
+        return path;
+    }
+    */
+    // Space Optimization
+    int minFallingPathSum(vector<vector<int>>& matrix) {
+        int m=matrix.size();
+        int n=matrix[0].size();
+        vector<int> prev(n,0);
+        for(int col=0;col<n;col++) prev[col]=matrix[0][col];
+        for(int row=1;row<m;row++) {
+            vector<int> cur(n,0);
+            for(int col=0;col<n;col++) {
+                int up=matrix[row][col]+prev[col];
+                int up_left=INT_MAX, up_right=INT_MAX;
+                if(col-1>=0) up_left=matrix[row][col]+prev[col-1];
+                if(col+1<n) up_right=matrix[row][col]+prev[col+1];
+                cur[col]=min(up, min(up_left, up_right));
+            }
+            prev=cur;
+        }
+        int path=INT_MAX;
+        for(int col=0;col<n;col++) path=min(path, prev[col]);
         return path;
     }
 };
