@@ -158,6 +158,7 @@ public:
         return res;
     }
     */
+    /*
     // Practice 4
     void helper(string &s, int pos, string &subset, vector<string> &res, unordered_map<char,string> &m) {
         if(pos>=s.size()) {
@@ -185,6 +186,35 @@ public:
         m['9']="wxyz";
         string subset;
         helper(digits,0,subset,res,m);
+        return res;
+    }
+    */
+    // Practice 5
+    void helper(int idx, string &digits, string &subset, vector<string> &res, unordered_map<char,string> &m) {
+        if(idx>=digits.size()) {
+            res.push_back(subset);
+            return;
+        }
+        for(char ch:m[digits[idx]]) {
+            subset.push_back(ch);
+            helper(idx+1,digits,subset,res,m);
+            subset.pop_back();
+        }
+    }
+    vector<string> letterCombinations(string digits) {
+        vector<string> res;
+        if(digits.size()==0) return res;
+        unordered_map<char, string> m;
+        m['2']="abc";
+        m['3']="def";
+        m['4']="ghi";
+        m['5']="jkl";
+        m['6']="mno";
+        m['7']="pqrs";
+        m['8']="tuv";
+        m['9']="wxyz";
+        string subset;
+        helper(0,digits,subset,res,m);
         return res;
     }
 };
