@@ -38,7 +38,7 @@ public:
         return helper(nums.size()-1,k,nums);
     }
     */
-    
+    /*
     // Memoization
     int helper(int idx, int t, vector<int> &nums, vector<vector<int>> &memo) {
         if(idx==0) {
@@ -61,5 +61,28 @@ public:
         vector<vector<int>> memo(n, vector<int>(k+1,-1));
         return helper(n-1,k,nums,memo);
     }
-    
+    */
+    // Tabulation
+    int findTargetSumWays(vector<int>& nums, int target) {
+        int s=0;
+        for(int n:nums) s+=n;
+        if(target+s<0 || (target+s)%2!=0) return 0;
+        int k=(target+s)/2;
+        int n=nums.size();
+        vector<vector<int>> table(n, vector<int>(k+1,-1));
+        for(int t=0;t<=k;t++) {
+            if(t==0 && nums[0]==t) table[0][t]=2;
+            else if(t==0 || nums[0]==t) table[0][t]=1;
+            else table[0][t]=0;
+        }
+        for(int idx=1;idx<n;idx++) {
+            for(int t=0;t<=k;t++) {
+                int notTake=table[idx-1][t];
+                int take=0;
+                if(nums[idx]<=t) take=table[idx-1][t-nums[idx]];
+                table[idx][t]=take+notTake;
+            }
+        }
+        return table[n-1][k];
+    }
 };
