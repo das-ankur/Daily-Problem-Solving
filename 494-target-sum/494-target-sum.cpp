@@ -94,20 +94,22 @@ public:
         if(target+s<0 || (target+s)%2!=0) return 0;
         int k=(target+s)/2;
         int n=nums.size();
-        vector<vector<int>> table(n, vector<int>(k+1,-1));
+        vector<int> prev(k+1,-1);
         for(int t=0;t<=k;t++) {
-            if(t==0 && nums[0]==t) table[0][t]=2;
-            else if(t==0 || nums[0]==t) table[0][t]=1;
-            else table[0][t]=0;
+            if(t==0 && nums[0]==t) prev[t]=2;
+            else if(t==0 || nums[0]==t) prev[t]=1;
+            else prev[t]=0;
         }
         for(int idx=1;idx<n;idx++) {
+            vector<int> curr(k+1,-1);
             for(int t=0;t<=k;t++) {
-                int notTake=table[idx-1][t];
+                int notTake=prev[t];
                 int take=0;
-                if(nums[idx]<=t) take=table[idx-1][t-nums[idx]];
-                table[idx][t]=take+notTake;
+                if(nums[idx]<=t) take=prev[t-nums[idx]];
+                curr[t]=take+notTake;
             }
+            prev=curr;
         }
-        return table[n-1][k];
+        return prev[k];
     }
 };
