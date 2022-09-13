@@ -12,6 +12,7 @@ public:
     }
     */
     
+    /*
     // Memoization
     int helper(int i, int j, string &s1, string &s2, vector<vector<int>> &memo) {
         if(i==0 || j==0) return 0;
@@ -23,13 +24,14 @@ public:
         vector<vector<int>> memo(text1.size()+1, vector<int>(text2.size()+1,-1));
         return helper(text1.size(),text2.size(),text1,text2,memo);
     }
+    */
     
-    /*
+    
     // Tabulation
-    int longestCommonSubsequence(string text1, string text2) {
-        vector<vector<int>> table(text1.size(), vector<int>(text2.size(),-1));
-        for(int i=0;i<s1.size();i++) {
-            for(int j=0;j<s2.size();j++) {
+    int longestCommonSubsequence(string s1, string s2) {
+        vector<vector<int>> table(s1.size()+1, vector<int>(s2.size()+1,-1));
+        for(int i=0;i<=s1.size();i++) {
+            for(int j=0;j<=s2.size();j++) {
                 if(i==0 || j==0) table[i][j]=0;
                 else {
                     if(s1[i-1]==s2[j-1]) table[i][j]=1+table[i-1][j-1];
@@ -37,9 +39,10 @@ public:
                 }
             }
         }
-        return table[s1.size()-1][s2.size()-1];
+        return table[s1.size()][s2.size()];
     }
     
+    /*
     // Space Optimization
     int longestCommonSubsequence(string text1, string text2) {
         vector<int> prev(text2.size(),0);
