@@ -27,6 +27,7 @@ public:
         return helper(0,n-1,s,memo);
     }
     */
+    /*
      // Memoization: Reverse the string and find longest common subsequence
     int lcs(string &s1, string &s2) {
         int n=s1.size();
@@ -47,4 +48,29 @@ public:
         reverse(s.begin(),s.end());
         return lcs(t,s);
     }
+    */
+    
+    // Space Optimization
+    int lcs(string &s1, string &s2) {
+        int n=s1.size();
+        vector<int> prev(n+1,-1);
+        for(int i=0;i<=n;i++) {
+            vector<int> curr(n+1,-1);
+            for(int j=0;j<=n;j++) {
+                if(i==0 || j==0) curr[j]=0;
+                else {
+                    if(s1[i-1]==s2[j-1]) curr[j]=1+prev[j-1];
+                    else curr[j]=max(prev[j],curr[j-1]);
+                }
+            }
+            prev=curr;
+        }
+        return prev[n];
+    }
+    int longestPalindromeSubseq(string s) {
+        string t=s;
+        reverse(s.begin(),s.end());
+        return lcs(t,s);
+    }
+    
 };
