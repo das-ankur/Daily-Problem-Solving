@@ -26,7 +26,7 @@ public:
     }
     */
     
-    
+    /*
     // Tabulation
     int longestCommonSubsequence(string s1, string s2) {
         vector<vector<int>> table(s1.size()+1, vector<int>(s2.size()+1,-1));
@@ -41,22 +41,23 @@ public:
         }
         return table[s1.size()][s2.size()];
     }
+    */
     
-    /*
+    
     // Space Optimization
-    int longestCommonSubsequence(string text1, string text2) {
-        vector<int> prev(text2.size(),0);
-        for(int i=0;i<s1.size();i++) {
-            vector<int> curr(text2.size(),0);
-            for(int j=0;j<s2.size();j++) {
+    int longestCommonSubsequence(string s1, string s2) {
+        vector<int> prev(s2.size()+1,0);
+        for(int i=0;i<=s1.size();i++) {
+            vector<int> curr(s2.size()+1,0);
+            for(int j=0;j<=s2.size();j++) {
                 if(i==0 || j==0) curr[j]=0;
                 else {
                     if(s1[i-1]==s2[j-1]) curr[j]=1+prev[j-1];
                     else curr[j]=max(prev[j], curr[j-1]);
                 }
             }
+            prev=curr;
         }
-        return prev[s2.size()-1];
+        return prev[s2.size()];
     }
-    */
 };
