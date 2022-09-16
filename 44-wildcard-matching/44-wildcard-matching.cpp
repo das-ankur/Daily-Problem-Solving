@@ -25,6 +25,7 @@ public:
     }
     */
     
+    /*
     // Memoization
     bool isAllStars(string &p, int j) {
         for(int k=0 ; k<=j; k++){
@@ -50,5 +51,34 @@ public:
         int n=p.size();
         vector<vector<int>> memo(m, vector<int>(n,-1));
         return helper(m-1, n-1, s, p, memo);
+    }
+    */
+    
+    // Tabulation
+    bool isAllStars(string &p, int j) {
+        for(int k=0 ; k<=j; k++){
+            if(p[k] != '*')
+                return false;
+        }
+        return true;
+    }
+    bool isMatch(string s, string p) {
+        int m=s.size();
+        int n=p.size();
+        vector<vector<bool>> table(m+1,vector<bool>(n+1,false));
+        table[0][0]=true;
+        for(int j=1;j<=n;j++) table[0][j]=isAllStars(p,j-1);
+        for(int i=1;i<=m;i++) table[i][0]=false;
+        for(int i=1;i<=m;i++) {
+            for(int j=1;j<=n;j++) {
+                if(s[i-1]==p[j-1]) table[i][j]=table[i-1][j-1];
+                else {
+                    if(p[j-1]=='?') table[i][j]=table[i-1][j-1];
+                    else if(p[j-1]=='*') table[i][j]=table[i-1][j] || table[i][j-1];
+                    else table[i][j]=false;
+                }
+            }
+        }
+        return table[m][n];
     }
 };
