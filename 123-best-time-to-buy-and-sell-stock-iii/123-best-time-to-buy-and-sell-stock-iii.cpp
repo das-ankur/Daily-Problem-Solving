@@ -56,4 +56,31 @@ public:
         }
         return table[0][0][2];
     }
+    
+    /*
+    // Space Optimization
+    int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        vector<vector<int>> prev(2, vector<int>(3,-1));
+        for(int i=0;i<=n;i++) {
+            for(int buy=0;buy<2;buy++) prev[buy][0]=0;
+        }
+        for(int buy=0;buy<2;buy++) {
+            for(int trans=1;trans<=2;trans++) prev[buy][trans]=0;
+        }
+        for(int i=n-1;i>=0;i--) {
+            vector<vector<int>> curr(2, vector<int>(3,-1));
+            for(int buy=0;buy<=1;buy++) {
+                for(int trans=1;trans<=2;trans++) {
+                    int op1=INT_MIN, op2=INT_MIN;
+                    if(buy==0) op1=max(prev[0][trans],-prices[i]+prev[1][trans]);
+                    if(buy==1) op2=max(prev[1][trans], prices[i]+prev[0][trans-1]);
+                    curr[buy][trans]=max(op1,op2);
+                }
+            }
+            prev=curr;
+        }
+        return prev[0][2];
+    }
+    */
 };
