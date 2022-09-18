@@ -34,6 +34,7 @@ public:
     }
     */
     
+    /*
     // Tabulation
     int maxProfit(vector<int>& prices) {
         int n=prices.size();
@@ -56,6 +57,7 @@ public:
         }
         return table[0][0][2];
     }
+    */
     
     /*
     // Space Optimization
@@ -83,4 +85,19 @@ public:
         return prev[0][2];
     }
     */
+    
+    // Practioce 1
+    int helper(int i, int buy, int tran, vector<int> &prices, vector<vector<vector<int>>> &memo) {
+        if(tran==0) return 0;
+        if(i==prices.size()) return 0;
+        if(memo[i][buy][tran]!=-1) return memo[i][buy][tran];
+        int op1=INT_MIN, op2=INT_MIN;
+        if(buy==0) op1=max(helper(i+1,0,tran,prices,memo), -prices[i]+helper(i+1,1,tran,prices,memo));
+        if(buy==1) op2=max(helper(i+1,1,tran,prices,memo), prices[i]+helper(i+1,0,tran-1,prices,memo));
+        return memo[i][buy][tran]=max(op1,op2);
+    }
+    int maxProfit(vector<int> &prices) {
+        vector<vector<vector<int>>> memo(prices.size(), vector<vector<int>>(2,vector<int>(3,-1)));
+        return helper(0,0,2,prices,memo);
+    }
 };
