@@ -59,19 +59,12 @@ public:
     }
     */
     
-    /*
     // Space Optimization
     int maxProfit(vector<int>& prices) {
         int n=prices.size();
-        vector<vector<int>> prev(2, vector<int>(3,-1));
-        for(int i=0;i<=n;i++) {
-            for(int buy=0;buy<2;buy++) prev[buy][0]=0;
-        }
-        for(int buy=0;buy<2;buy++) {
-            for(int trans=1;trans<=2;trans++) prev[buy][trans]=0;
-        }
+        vector<vector<int>> prev(2, vector<int>(3,0));
         for(int i=n-1;i>=0;i--) {
-            vector<vector<int>> curr(2, vector<int>(3,-1));
+            vector<vector<int>> curr(2, vector<int>(3,0));
             for(int buy=0;buy<=1;buy++) {
                 for(int trans=1;trans<=2;trans++) {
                     int op1=INT_MIN, op2=INT_MIN;
@@ -84,8 +77,8 @@ public:
         }
         return prev[0][2];
     }
-    */
     
+    /*
     // Practioce 1
     int helper(int i, int buy, int tran, vector<int> &prices, vector<vector<vector<int>>> &memo) {
         if(tran==0) return 0;
@@ -100,4 +93,5 @@ public:
         vector<vector<vector<int>>> memo(prices.size(), vector<vector<int>>(2,vector<int>(3,-1)));
         return helper(0,0,2,prices,memo);
     }
+    */
 };
