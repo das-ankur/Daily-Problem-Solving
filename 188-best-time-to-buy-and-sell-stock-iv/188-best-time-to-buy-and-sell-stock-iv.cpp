@@ -12,6 +12,7 @@ public:
         return helper(0,0,k,prices);
     }
     */
+    /*
     // Memoization
     int helper(int i, int buy, int tran, vector<int> &prices, vector<vector<vector<int>>> &memo) {
         if(tran==0 || i==prices.size()) return 0;
@@ -22,5 +23,21 @@ public:
     int maxProfit(int k, vector<int>& prices) {
         vector<vector<vector<int>>> memo(prices.size(), vector<vector<int>>(2, vector<int>(k+1,-1)));
         return helper(0,0,k,prices,memo);
+    }
+    */
+    
+    // Tabulation
+    int maxProfit(int k, vector<int>& prices) {
+        int n=prices.size();
+        vector<vector<vector<int>>> table(n+1, vector<vector<int>>(2, vector<int>(k+1,0)));
+        for(int i=n-1;i>=0;i--) {
+            for(int buy=0;buy<=1;buy++) {
+                for(int tran=1;tran<=k;tran++) {
+                    if(buy==0) table[i][buy][tran]=max(table[i+1][0][tran], -prices[i]+table[i+1][1][tran]);
+                    else table[i][buy][tran]=max(table[i+1][1][tran], prices[i]+table[i+1][0][tran-1]);
+                }
+            }
+        }
+        return table[0][0][k];
     }
 };
