@@ -29,6 +29,7 @@ public:
     }
     */
     
+    /*
     // Tabulation
     int maxProfit(vector<int>& prices, int fee) {
         int n=prices.size();
@@ -40,5 +41,21 @@ public:
             }
         }
         return table[0][0];
+    }
+    */
+    
+    // Space Optimization
+    int maxProfit(vector<int>& prices, int fee) {
+        int n=prices.size();
+        vector<int> prev(2,0);
+        for(int i=n-1;i>=0;i--) {
+            vector<int> curr(2,0);
+            for(int buy=1;buy>=0;buy--) {
+                if(buy==0) curr[buy]=max(prev[0], -prices[i]+prev[1]);
+                else curr[buy]=max(prev[1], -fee+prices[i]+prev[0]);
+            }
+            prev=curr;
+        }
+        return prev[0];
     }
 };
