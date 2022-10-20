@@ -7,8 +7,7 @@ public:
         vector<vector<int>> res;
         for(int i=0;i<n;) {
             for(int j=i+1;j<n;) {
-                long long int s=target-nums[i];
-                s-=nums[j];
+                long long int s=target-(long long int)(nums[i]+nums[j]);
                 int left=j+1;
                 int right=n-1;
                 while(left<right) {
