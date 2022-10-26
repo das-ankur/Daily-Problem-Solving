@@ -6,6 +6,7 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
 public:
+    // Hash Map
     int *findTwoElement(int *arr, int n) {
         // code here
         unordered_map<int,int> m;
