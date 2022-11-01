@@ -10,6 +10,6 @@ public:
             if(nums[mid]<nums[mid-1]) high=mid-1;
             else low=mid+1;
         }
-        return low;
+        return high;
     }
 };
