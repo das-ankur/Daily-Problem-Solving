@@ -1,25 +1,74 @@
 class Solution {
 public:
     string addBinary(string a, string b) {
-        int i = a.length()-1;
-        int j = b.length()-1;
-        string ans;
-        int carry = 0;
-        
-        while(i>=0 || j>=0 || carry){
-            if(i>=0){
-                carry += a[i] - '0';
-                i--;
+        int i=a.size()-1, j=b.size()-1, carry=0, sum;
+        string res;
+        while(i>=0 && j>=0) {
+            sum=(a[i]-'0')+(b[j]-'0')+carry;
+            if(sum==0) {
+                sum=0;
+                carry=0;
             }
-            if(j>=0){
-                carry += b[j] - '0';
-                j--;
+            else if(sum==1) {
+                sum=1;
+                carry=0;
             }
-            
-            ans += (carry%2 + '0');
-            carry = carry/2;
+            else if(sum==2) {
+                sum=0;
+                carry=1;
+            }
+            else {
+                sum=1;
+                carry=1;
+            }
+            res.push_back('0'+sum);
+            i--;
+            j--;
         }
-        reverse(ans.begin(),ans.end());
-        return ans;
+        while(i>=0) {
+            sum=(a[i]-'0')+carry;
+            if(sum==0) {
+                sum=0;
+                carry=0;
+            }
+            else if(sum==1) {
+                sum=1;
+                carry=0;
+            }
+            else if(sum==2) {
+                sum=0;
+                carry=1;
+            }
+            else {
+                sum=1;
+                carry=1;
+            }
+            res.push_back('0'+sum);
+            i--;
+        }
+        while(j>=0) {
+            sum=(b[j]-'0')+carry;
+            if(sum==0) {
+                sum=0;
+                carry=0;
+            }
+            else if(sum==1) {
+                sum=1;
+                carry=0;
+            }
+            else if(sum==2) {
+                sum=0;
+                carry=1;
+            }
+            else {
+                sum=1;
+                carry=1;
+            }
+            res.push_back('0'+sum);
+            j--;
+        }
+        if(carry==1) res.push_back('0'+carry);
+        reverse(res.begin(),res.end());
+        return res;
     }
 };
