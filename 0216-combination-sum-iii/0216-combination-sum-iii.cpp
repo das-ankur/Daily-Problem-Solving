@@ -133,6 +133,7 @@ public:
         }
         if(i>9) return;
         if(k==0 || n<=0) return;
+        if(k>9-i+1) return;
         // Take
         subset.push_back(i);
         helper(i+1,k-1,n-i,subset,res);
