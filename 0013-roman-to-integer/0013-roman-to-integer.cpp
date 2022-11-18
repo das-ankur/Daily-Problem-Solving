@@ -1,5 +1,6 @@
 class Solution {
 public:
+    /*
     int romanToInt(string s) {
         unordered_map<char,int> m;
         m['I']=1;
@@ -19,5 +20,24 @@ public:
         //cout<<num;
         //cout<<endl;
         return num;
+    }
+    */
+    // Practice 1
+    int romanToInt(string s) {
+        unordered_map<char,int> m;
+        m['I']=1;
+        m['V']=5;
+        m['X']=10;
+        m['L']=50;
+        m['C']=100;
+        m['D']=500;
+        m['M']=1000;
+        int n=0,prev=0;
+        for(int i=s.size()-1;i>=0;i--) {
+            if(m[s[i]]<prev) n-=m[s[i]];
+            else n+=m[s[i]];
+            prev=m[s[i]];
+        }
+        return n;
     }
 };
