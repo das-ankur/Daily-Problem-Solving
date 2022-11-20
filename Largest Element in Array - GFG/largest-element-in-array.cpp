@@ -15,12 +15,16 @@ public:
         /*
         return *max_element(arr.begin(), arr.end());
         */
+        /*
         // First Approach
         int max_val=INT_MIN;
         for(int i=0;i<n;i++) {
             if(max_val<arr[i]) max_val=arr[i];
         }
         return max_val;
+        */
+        // Second Approach
+        return *max_element(arr.begin(),arr.end());
     }
 };
 
