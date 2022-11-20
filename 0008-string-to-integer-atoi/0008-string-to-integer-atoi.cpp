@@ -56,6 +56,7 @@ class Solution
         
     }
     */
+    // Practice 1
     int myAtoi(string s) {
         int n=s.size(), num=0;
         int i=0;
