@@ -20,6 +20,7 @@ public:
         return rest;
     }
     */
+    /*
     // Practice 1
     ListNode* reverseList(ListNode* head) {
         if(head==NULL || head->next==NULL) return head;
@@ -27,5 +28,18 @@ public:
         head->next->next=head;
         head->next=NULL;
         return rest;
+    }
+    */
+    // Iterative
+    ListNode* reverseList(ListNode* head) {
+        if(head==NULL || head->next==NULL) return head;
+        ListNode *cur_node=head, *prev_node=NULL, *next_node=NULL;
+        while(cur_node!=NULL) {
+            next_node=cur_node->next;
+            cur_node->next=prev_node;
+            prev_node=cur_node;
+            cur_node=next_node;
+        }
+        return prev_node;
     }
 };
