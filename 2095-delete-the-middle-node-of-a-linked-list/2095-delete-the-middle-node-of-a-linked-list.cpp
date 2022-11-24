@@ -18,9 +18,6 @@ public:
             fast=fast->next->next;
             slow=slow->next;
         }
-        //cout<<fast->val<<endl;
-        //cout<<slow->val<<" "<<preptr->val<<endl;
-        //cout<<"=============="<<endl;
         preptr->next=slow->next;
         delete slow;
         return head;
