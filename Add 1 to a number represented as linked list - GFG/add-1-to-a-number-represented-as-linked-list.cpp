@@ -46,6 +46,7 @@ struct Node
 class Solution
 {
     public:
+    /*
     // Reverse Linked List
     Node *reverse(Node *head) {
         Node *prev=NULL, *curr=head, *next=NULL;
@@ -74,6 +75,23 @@ class Solution
         }
         if(carry==1) preptr->next=new struct Node(carry);
         return reverse(head);
+    }
+    */
+    // Recursive Implementation
+    int helper(Node *head) {
+        if(head==NULL) return 1;
+        int temp=head->data+helper(head->next);
+        head->data=temp%10;
+        return temp/10;
+    }
+    Node* addOne(Node *head) {
+        int carry=helper(head);
+        if(carry==1) {
+            Node *newnode=new Node(carry);
+            newnode->next=head;
+            head=newnode;
+        }
+        return head;
     }
 };
 
