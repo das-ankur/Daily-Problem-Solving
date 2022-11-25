@@ -77,6 +77,7 @@ class Solution
         return reverse(head);
     }
     */
+    /*
     // Recursive Implementation
     int helper(Node *head) {
         if(head==NULL) return 1;
@@ -90,6 +91,41 @@ class Solution
             Node *newnode=new Node(carry);
             newnode->next=head;
             head=newnode;
+        }
+        return head;
+    }
+    */
+    Node* addOne(Node *head) {
+        Node* ln = head;
+        if (head->next == NULL) {
+            head->data += 1;
+            return head;
+        }
+        Node* t = head;
+        int prev;
+        while (t->next) {
+            if (t->data != 9) ln = t;
+            t = t->next;
+        }
+        if (t->data == 9 && ln != NULL) {
+            if (ln->data == 9 && ln == head) {
+                Node* temp = new Node(1);
+                temp->next = head;
+                head = temp;
+                t = ln;
+            }
+            else {
+                t = ln;
+                t->data += 1;
+                t = t->next;
+            }
+            while (t) {
+                t->data = 0;
+                t = t->next;
+            }
+        }
+        else {
+            t->data += 1;
         }
         return head;
     }
