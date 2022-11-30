@@ -4,27 +4,27 @@
 <br>
 <span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input</strong>: N = 4, K = 0
+<pre><span style="font-size:18px"><strong>Input</strong>: N = 4, K = 0
 <strong>Output</strong>: No
 <strong>Explanation</strong>: Binary representation of 4 is 100, 
 in which 0<sup>th</sup> bit from LSB is not set. 
-So, return false.</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+So, return false.</span></pre>
 
 <p><strong><span style="font-size:18px">Example 2:</span></strong></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input</strong>: N = 4, K = 2
+<pre><span style="font-size:18px"><strong>Input</strong>: N = 4, K = 2
 <strong>Output</strong>: Yes
 <strong>Explanation</strong>: Binary representation of 4 is 100, 
 in which 2<sup>nd</sup> bit from LSB is set. 
-So, return true.</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+So, return true.</span></pre>
 
 <p><strong><span style="font-size:18px">Example 3:</span></strong></p>
 
-<pre style="position: relative;"><span style="font-size:18px"><strong>Input</strong>: N = 500, K = 3
+<pre><span style="font-size:18px"><strong>Input</strong>: N = 500, K = 3
 <strong>Output</strong>: No
 <strong>Explanation</strong>: Binary representation of 500&nbsp;is 
 111110100, in which 3rd bit from LSB is not set. 
-So, return false.</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+So, return false.</span></pre>
 
 <div><br>
 <strong><span style="font-size:18px">Your task:</span></strong></div>
