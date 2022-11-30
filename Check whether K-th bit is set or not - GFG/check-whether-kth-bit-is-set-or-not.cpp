@@ -17,7 +17,8 @@ class Solution
     {
         // Your code here
         // It can be a one liner logic!! Think of it!!
-        return n & (int)pow(2,k);
+        //return n & (int)pow(2,k);
+        return 1 & n>>k;
     }
 };
 
