@@ -65,6 +65,7 @@ public:
         return num;
     }
     */
+    /*
     // Hashing
     int majorityElement(vector<int>& nums) {
         unordered_map<int, int> m;
@@ -73,5 +74,20 @@ public:
             if(x.second>nums.size()/2) return x.first;
         }
         return -1;
+    }
+    */
+    int majorityElement(vector<int>& nums) {
+        int count=0, num;
+        for(int x: nums) {
+            if(count==0) {
+                count++;
+                num=x;
+            }
+            else {
+                if(num==x) count++;
+                else count--;
+            }
+        }
+        return num;
     }
 }; 
