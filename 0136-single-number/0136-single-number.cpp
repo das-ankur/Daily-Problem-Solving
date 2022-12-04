@@ -10,6 +10,7 @@ public:
         return res;
     }
     */
+    /*
     // Hashing
     int singleNumber(vector<int>& nums) {
         unordered_map<int, int> m;
@@ -19,5 +20,12 @@ public:
             if(x.second==1) return x.first;
         }
         return -1;
+    }
+    */
+    // Bit Manipulation: XOR
+    int singleNumber(vector<int>& nums) {
+        int res=0;;
+        for(int x: nums) res ^= x;
+        return res;
     }
 };
