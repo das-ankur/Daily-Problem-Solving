@@ -151,6 +151,7 @@ public:
         return res;
     }
     */
+    /*
     // Practice 8
     void helper(int i, vector<int> &nums, vector<int> &subset, vector<vector<int>> &power_set) {
         if(i==nums.size()) {
@@ -169,5 +170,19 @@ public:
         vector<int> subset;
         helper(0, nums, subset, power_set);
         return power_set;
+    }
+    */
+    vector<vector<int>> subsets(vector<int> &nums) {
+        vector<vector<int>> res;
+        int bits=nums.size();
+        int limit=pow(2,bits);
+        for(int i=0;i<limit;i++) {
+            vector<int> temp;
+            for(int j=0;j<bits;j++) {
+                if(i & (1<<j)) temp.push_back(nums[j]);
+            }
+            res.push_back(temp);
+        }
+        return res;
     }
 }; 
