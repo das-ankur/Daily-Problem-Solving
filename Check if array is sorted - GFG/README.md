@@ -4,20 +4,20 @@
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
-<pre><span style="font-size:18px"><strong>Input:
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
 </strong>N = 5
 arr[] = {10, 20, 30, 40, 50}
 <strong>Output:</strong> 1
 <strong>Explanation:</strong> The given array is sorted.
-</span></pre>
+</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><span style="font-size:18px"><strong>Example 2:</strong></span></p>
 
-<pre><span style="font-size:18px"><strong>Input:
+<pre style="position: relative;"><span style="font-size:18px"><strong>Input:
 </strong>N = 6
 arr[] = {90, 80, 100, 70, 40, 30}
 <strong>Output:</strong> 0
-<strong>Explanation:</strong>&nbsp;The given array is not sorted.</span></pre>
+<strong>Explanation:</strong>&nbsp;The given array is not sorted.</span><div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
 
 <p><br>
 <span style="font-size:18px"><strong>Your Task:</strong><br>
