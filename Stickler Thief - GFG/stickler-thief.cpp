@@ -53,6 +53,7 @@ class Solution
         return helper(n-1,arr,memo);
     }
     */
+    /*
     // Tabulation
     int FindMaxSum(int arr[], int n) {
         vector<int> table(n,0);
@@ -65,7 +66,19 @@ class Solution
         }
         return table[n-1];
     }
-    
+    */
+    // Space Optimization
+    int FindMaxSum(int arr[], int n) {
+        int prev1=arr[0],prev2=0;
+        for(int i=0;i<n;i++) {
+            int notTake=prev1;
+            int take=arr[i];
+            if(i>=2) take+=prev2;
+            prev2=prev1;
+            prev1=max(take,notTake);
+        }
+        return prev1;
+    }
 };
 
 //{ Driver Code Starts.
