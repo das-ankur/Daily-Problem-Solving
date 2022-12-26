@@ -14,7 +14,7 @@ class Solution {
         int two_step=INT_MAX;
         if(i+2<=n-1) two_step=abs(height[i]-height[i+2])+helper(i+2,n,height);
         return min(one_step,two_step);
-    }*/
+    }
     // Memoization
     int helper(int i, int n, vector<int> &height, vector<int> &memo) {
         if(i==n-1) return 0;
@@ -24,10 +24,29 @@ class Solution {
         if(i+2<=n-1) two_step=abs(height[i]-height[i+2])+helper(i+2,n,height,memo);
         return memo[i]=min(one_step,two_step);
     }
+    // Tabulation
     int minimumEnergy(vector<int>& height, int n) {
-        // Code here
-        vector<int> memo(n,-1);
-        return helper(0,n,height,memo);
+        vector<int> table(n,0);
+        for(int i=n-2;i>=0;i--) {
+            int one_step=abs(height[i]-height[i+1])+table[i+1];
+            int two_step=INT_MAX;
+            if(i+2<=n-1) two_step=abs(height[i]-height[i+2])+table[i+2];
+            table[i]=min(one_step,two_step);
+        }
+        return table[0];
+    }
+    */
+    // Space Optimization
+    int minimumEnergy(vector<int>& height, int n) {
+        int one_prev=0, two_prev=0;
+        for(int i=n-2;i>=0;i--) {
+            int one_step=abs(height[i]-height[i+1])+one_prev;
+            int two_step=INT_MAX;
+            if(i+2<=n-1) two_step=abs(height[i]-height[i+2])+two_prev;
+            two_prev=one_prev;
+            one_prev=min(one_step,two_step);
+        }
+        return one_prev;
     }
 };
 
