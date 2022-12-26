@@ -38,6 +38,7 @@ class Solution
         return helper(n-1,arr);
     }
     */
+    /*
     // Memoization
     int helper(int i, int arr[], vector<int> &memo) {
         if(i<0) return 0;
@@ -51,6 +52,20 @@ class Solution
         vector<int> memo(n,-1);
         return helper(n-1,arr,memo);
     }
+    */
+    // Tabulation
+    int FindMaxSum(int arr[], int n) {
+        vector<int> table(n,0);
+        table[0]=arr[0];
+        for(int i=0;i<n;i++) {
+            int notTake=table[i-1];
+            int take=arr[i];
+            if(i>=2) take+=table[i-2];
+            table[i]=max(take,notTake);
+        }
+        return table[n-1];
+    }
+    
 };
 
 //{ Driver Code Starts.
