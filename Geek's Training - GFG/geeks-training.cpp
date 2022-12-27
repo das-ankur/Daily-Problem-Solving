@@ -20,6 +20,7 @@ class Solution {
         return helper(0,0,n,points);
     }
     */
+    /*
     // Memoization
     int helper(int i, int prev, int n, vector<vector<int>> &points, vector<vector<int>> &memo) {
         if(i==n) return 0;
@@ -34,6 +35,26 @@ class Solution {
     int maximumPoints(vector<vector<int>>& points, int n) {
         vector<vector<int>> memo(n,vector<int>(3,-1));
         return helper(0,0,n,points,memo);
+    }
+    */
+    // Tabulation
+    int maximumPoints(vector<vector<int>>& points, int n) {
+        vector<vector<int>> dp(n,vector<int>(4,0));
+        dp[0][0]=max(points[0][1],points[0][2]);
+        dp[0][1]=max(points[0][0],points[0][2]);
+        dp[0][2]=max(points[0][0],points[0][1]);
+        dp[0][3]=max(max(points[0][0],points[0][1]),points[0][2]);
+        for(int day=1;day<n;day++) {
+            for(int last=0;last<4;last++) {
+                int temp_max=0;
+                for(int task=0;task<3;task++) {
+                    if(task==last) continue;
+                    temp_max=max(temp_max,points[day][task]+dp[day-1][task]);
+                }
+                dp[day][last]=temp_max;
+            }
+        }
+        return dp[n-1][3];
     }
 };
 
